@@ -1,0 +1,25 @@
+{
+  "name": "CrossFit WOD 생성기",
+  "short_name": "WOD",
+  "description": "크로스핏 WOD 생성기 — 랜덤 또는 커스텀 운동 루틴을 만들어보세요",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#121212",
+  "theme_color": "#FF6B35",
+  "lang": "ko",
+  "icons": [
+    {
+      "src": "/assets/icon.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/adaptive-icon.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
