@@ -20,6 +20,12 @@ export interface Movement {
   };
   unit: RepUnit;
   tips?: string;
+  /** 난이도별 수행 방법 및 무게 기준 */
+  scaling: {
+    beginner: string;
+    intermediate: string;
+    rx: string;
+  };
 }
 
 export interface WodMovement {

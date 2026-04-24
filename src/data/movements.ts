@@ -10,6 +10,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'pull',
     defaultReps: { beginner: 5, intermediate: 10, rx: 15 },
     unit: 'reps',
+    scaling: {
+      beginner: '밴드 풀업 또는 링 로우',
+      intermediate: '키핑 풀업',
+      rx: '버터플라이 또는 스트릭트 풀업',
+    },
   },
   {
     id: 'chest-to-bar',
@@ -19,6 +24,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'pull',
     defaultReps: { beginner: 3, intermediate: 7, rx: 10 },
     unit: 'reps',
+    scaling: {
+      beginner: '키핑 풀업으로 대체',
+      intermediate: '키핑 C2B',
+      rx: '버터플라이 C2B',
+    },
   },
   {
     id: 'muscle-up',
@@ -28,6 +38,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'total',
     defaultReps: { beginner: 2, intermediate: 4, rx: 7 },
     unit: 'reps',
+    scaling: {
+      beginner: '풀업 + 딥으로 분리 수행',
+      intermediate: '키핑 링 머슬업',
+      rx: '스트릭트 링 머슬업',
+    },
   },
   {
     id: 'bar-muscle-up',
@@ -37,6 +52,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'total',
     defaultReps: { beginner: 2, intermediate: 4, rx: 7 },
     unit: 'reps',
+    scaling: {
+      beginner: '점핑 바 머슬업 또는 풀업으로 대체',
+      intermediate: '키핑 바 머슬업',
+      rx: '스트릭트 바 머슬업',
+    },
   },
   {
     id: 'toes-to-bar',
@@ -46,6 +66,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'core',
     defaultReps: { beginner: 10, intermediate: 15, rx: 20 },
     unit: 'reps',
+    scaling: {
+      beginner: '니즈 투 체스트',
+      intermediate: '니즈 투 엘보',
+      rx: '두 발이 봉에 동시에 닿아야 함',
+    },
   },
   {
     id: 'knees-to-elbow',
@@ -55,6 +80,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'core',
     defaultReps: { beginner: 10, intermediate: 15, rx: 20 },
     unit: 'reps',
+    scaling: {
+      beginner: '무릎 들어올리기 (행잉 니 레이즈)',
+      intermediate: '니즈 투 엘보',
+      rx: '토즈 투 바로 강화 가능',
+    },
   },
 
   // ── Gymnastics / push ──────────────────────────────
@@ -66,6 +96,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'push',
     defaultReps: { beginner: 10, intermediate: 20, rx: 30 },
     unit: 'reps',
+    scaling: {
+      beginner: '무릎 대고 푸쉬업',
+      intermediate: '스트릭트 푸쉬업 (가슴이 바닥에 닿아야 함)',
+      rx: '발 올린 푸쉬업 또는 아처 푸쉬업',
+    },
   },
   {
     id: 'ring-dip',
@@ -75,6 +110,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'push',
     defaultReps: { beginner: 5, intermediate: 10, rx: 15 },
     unit: 'reps',
+    scaling: {
+      beginner: '박스 딥 또는 밴드 링 딥',
+      intermediate: '링 딥 (키핑 허용)',
+      rx: '스트릭트 링 딥 (상단에서 링 턴아웃)',
+    },
   },
   {
     id: 'hspu',
@@ -84,6 +124,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'push',
     defaultReps: { beginner: 3, intermediate: 7, rx: 10 },
     unit: 'reps',
+    scaling: {
+      beginner: '파이크 푸쉬업 또는 박스 파이크',
+      intermediate: '벽 키핑 HSPU (머리가 바닥에 닿아야 함)',
+      rx: '스트릭트 HSPU',
+    },
   },
   {
     id: 'wall-walk',
@@ -93,6 +138,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'push',
     defaultReps: { beginner: 3, intermediate: 5, rx: 8 },
     unit: 'reps',
+    scaling: {
+      beginner: '부분 월워크 (벽에 발만 올리는 수준)',
+      intermediate: '풀 월워크 (벽에 붙을 때까지)',
+      rx: '핸드스탠드 홀드 5초 포함',
+    },
   },
 
   // ── Gymnastics / squat & total ─────────────────────
@@ -104,6 +154,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'squat',
     defaultReps: { beginner: 10, intermediate: 15, rx: 20 },
     unit: 'reps',
+    scaling: {
+      beginner: '20인치 박스 스텝업',
+      intermediate: '20인치 박스 점프',
+      rx: '남 61cm(24인치) / 여 51cm(20인치)',
+    },
   },
   {
     id: 'burpee',
@@ -113,6 +168,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'total',
     defaultReps: { beginner: 10, intermediate: 15, rx: 20 },
     unit: 'reps',
+    scaling: {
+      beginner: '스텝아웃 버피 (점프 없이 천천히)',
+      intermediate: '스탠다드 버피 (점프 포함)',
+      rx: '버피 후 점프 + 머리 위 박수',
+    },
   },
   {
     id: 'burpee-box-jump',
@@ -122,9 +182,14 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'total',
     defaultReps: { beginner: 5, intermediate: 10, rx: 15 },
     unit: 'reps',
+    scaling: {
+      beginner: '버피 후 박스 스텝오버 (20인치)',
+      intermediate: '버피 후 박스 점프오버 (20인치)',
+      rx: '남 61cm(24인치) / 여 51cm(20인치) 박스 점프오버',
+    },
   },
 
-  // ── Weightlifting / total (올림픽 리프트) ────────────
+  // ── Weightlifting / total ──────────────────────────
   {
     id: 'power-clean',
     nameKo: '파워 클린',
@@ -133,6 +198,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'total',
     defaultReps: { beginner: 5, intermediate: 10, rx: 15 },
     unit: 'reps',
+    scaling: {
+      beginner: '남 40kg / 여 25kg · 데드리프트 하이풀로 연습',
+      intermediate: '남 60kg / 여 40kg',
+      rx: '남 80kg / 여 55kg',
+    },
   },
   {
     id: 'hang-power-clean',
@@ -142,6 +212,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'total',
     defaultReps: { beginner: 5, intermediate: 10, rx: 15 },
     unit: 'reps',
+    scaling: {
+      beginner: '남 35kg / 여 20kg · 무릎 위에서 시작',
+      intermediate: '남 55kg / 여 35kg',
+      rx: '남 70kg / 여 47kg',
+    },
   },
   {
     id: 'power-snatch',
@@ -151,6 +226,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'total',
     defaultReps: { beginner: 5, intermediate: 10, rx: 15 },
     unit: 'reps',
+    scaling: {
+      beginner: '남 30kg / 여 20kg · 스내치 그립 데드리프트로 연습',
+      intermediate: '남 50kg / 여 35kg',
+      rx: '남 70kg (Isabel: 61kg) / 여 47kg',
+    },
   },
   {
     id: 'clean-and-jerk',
@@ -160,6 +240,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'total',
     defaultReps: { beginner: 5, intermediate: 10, rx: 15 },
     unit: 'reps',
+    scaling: {
+      beginner: '남 40kg / 여 25kg · 클린 또는 저크 분리 연습',
+      intermediate: '남 60kg / 여 40kg',
+      rx: '남 80kg (Grace: 61kg) / 여 55kg',
+    },
   },
   {
     id: 'dumbbell-snatch',
@@ -169,6 +254,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'total',
     defaultReps: { beginner: 10, intermediate: 15, rx: 20 },
     unit: 'reps',
+    scaling: {
+      beginner: '남 15kg / 여 10kg 덤벨 · 교대 없이 한 팔씩',
+      intermediate: '남 22.5kg / 여 15kg 덤벨',
+      rx: '남 22.5kg(50lb) / 여 15kg(35lb) · 교대 스내치',
+    },
   },
   {
     id: 'thruster',
@@ -178,6 +268,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'total',
     defaultReps: { beginner: 9, intermediate: 15, rx: 21 },
     unit: 'reps',
+    scaling: {
+      beginner: '남 30kg / 여 20kg · 프론트 스쿼트와 푸쉬 프레스 분리 연습',
+      intermediate: '남 35kg / 여 25kg',
+      rx: '남 43kg(95lb) / 여 29kg(65lb) (Fran 기준)',
+    },
   },
   {
     id: 'wall-ball',
@@ -187,6 +282,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'total',
     defaultReps: { beginner: 15, intermediate: 20, rx: 30 },
     unit: 'reps',
+    scaling: {
+      beginner: '남 6kg / 여 4kg · 목표 높이 2.7m',
+      intermediate: '남 9kg / 여 6kg · 목표 높이 3m(남) / 2.7m(여)',
+      rx: '남 9kg(20lb) 3m / 여 6kg(14lb) 2.7m',
+    },
   },
 
   // ── Weightlifting / hinge ──────────────────────────
@@ -199,6 +299,11 @@ export const MOVEMENTS: Movement[] = [
     defaultReps: { beginner: 9, intermediate: 15, rx: 21 },
     unit: 'reps',
     tips: '체중의 1.5배 기준',
+    scaling: {
+      beginner: '남 60kg / 여 40kg · 루마니안 데드리프트로 대체 가능',
+      intermediate: '남 80-100kg / 여 55-70kg',
+      rx: '남 102kg(225lb) / 여 70kg(155lb)',
+    },
   },
   {
     id: 'kettlebell-swing',
@@ -208,6 +313,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'hinge',
     defaultReps: { beginner: 15, intermediate: 21, rx: 30 },
     unit: 'reps',
+    scaling: {
+      beginner: '남 16kg / 여 12kg · 러시안 스윙(어깨 높이)',
+      intermediate: '남 24kg / 여 16kg · 아메리칸 스윙(머리 위)',
+      rx: '남 32kg(70lb) / 여 24kg(53lb) · 아메리칸 스윙',
+    },
   },
 
   // ── Weightlifting / push ───────────────────────────
@@ -219,6 +329,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'push',
     defaultReps: { beginner: 9, intermediate: 15, rx: 21 },
     unit: 'reps',
+    scaling: {
+      beginner: '남 30kg / 여 20kg · 스트릭트 프레스로 대체 가능',
+      intermediate: '남 40kg / 여 27kg',
+      rx: '남 50kg(110lb) / 여 35kg(75lb)',
+    },
   },
   {
     id: 'shoulder-to-overhead',
@@ -228,6 +343,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'push',
     defaultReps: { beginner: 9, intermediate: 15, rx: 21 },
     unit: 'reps',
+    scaling: {
+      beginner: '남 30kg / 여 20kg · 푸쉬 프레스 방식 사용',
+      intermediate: '남 40kg / 여 27kg · 푸쉬 저크 허용',
+      rx: '남 50kg(110lb) / 여 35kg(75lb) · 방식 자유',
+    },
   },
 
   // ── Weightlifting / squat ──────────────────────────
@@ -239,6 +359,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'squat',
     defaultReps: { beginner: 5, intermediate: 10, rx: 15 },
     unit: 'reps',
+    scaling: {
+      beginner: '남 40kg / 여 25kg · 고블릿 스쿼트로 대체 가능',
+      intermediate: '남 60-70kg / 여 40-50kg',
+      rx: '남 80kg+ / 여 55kg+',
+    },
   },
   {
     id: 'back-squat',
@@ -248,6 +373,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'squat',
     defaultReps: { beginner: 5, intermediate: 10, rx: 15 },
     unit: 'reps',
+    scaling: {
+      beginner: '남 50kg / 여 30kg · 박스 스쿼트로 깊이 연습',
+      intermediate: '남 70-90kg / 여 45-60kg',
+      rx: '남 100kg+ / 여 65kg+',
+    },
   },
   {
     id: 'overhead-squat',
@@ -257,6 +387,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'squat',
     defaultReps: { beginner: 5, intermediate: 10, rx: 15 },
     unit: 'reps',
+    scaling: {
+      beginner: 'PVC 또는 남 20kg / 여 15kg · 유연성 위주',
+      intermediate: '남 40kg / 여 25kg',
+      rx: '남 60kg+ / 여 40kg+',
+    },
   },
 
   // ── Cardio / mono ──────────────────────────────────
@@ -268,6 +403,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'mono',
     defaultReps: { beginner: 200, intermediate: 400, rx: 800 },
     unit: 'meters',
+    scaling: {
+      beginner: '200m 조깅 (걸어도 됨)',
+      intermediate: '400m 달리기',
+      rx: '800m 전속력 달리기',
+    },
   },
   {
     id: 'row',
@@ -277,6 +417,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'mono',
     defaultReps: { beginner: 250, intermediate: 500, rx: 1000 },
     unit: 'meters',
+    scaling: {
+      beginner: '250m (500m 스플릿 2:40 이하 페이스)',
+      intermediate: '500m (500m 스플릿 2:10 페이스)',
+      rx: '1000m 최대 페이스',
+    },
   },
   {
     id: 'bike',
@@ -286,6 +431,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'mono',
     defaultReps: { beginner: 10, intermediate: 15, rx: 20 },
     unit: 'calories',
+    scaling: {
+      beginner: '10칼로리 · 팔다리 동시 사용',
+      intermediate: '15칼로리 · 일정한 페이스 유지',
+      rx: '20칼로리 · 전속력',
+    },
   },
   {
     id: 'ski-erg',
@@ -295,6 +445,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'mono',
     defaultReps: { beginner: 250, intermediate: 500, rx: 1000 },
     unit: 'meters',
+    scaling: {
+      beginner: '250m · 팔 주도로 천천히',
+      intermediate: '500m · 코어 연동 풀다운',
+      rx: '1000m 최대 페이스',
+    },
   },
   {
     id: 'double-under',
@@ -304,6 +459,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'mono',
     defaultReps: { beginner: 30, intermediate: 50, rx: 100 },
     unit: 'reps',
+    scaling: {
+      beginner: '싱글언더 3배 또는 더블언더 10회 연습',
+      intermediate: '더블언더 50회 (실패 시 싱글언더 3배)',
+      rx: '더블언더 100회 논스톱',
+    },
   },
   {
     id: 'single-under',
@@ -313,6 +473,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'mono',
     defaultReps: { beginner: 60, intermediate: 100, rx: 150 },
     unit: 'reps',
+    scaling: {
+      beginner: '60회 · 리듬 유지에 집중',
+      intermediate: '100회',
+      rx: '150회 또는 더블언더 50회로 대체',
+    },
   },
 
   // ── Core ───────────────────────────────────────────
@@ -324,6 +489,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'core',
     defaultReps: { beginner: 20, intermediate: 30, rx: 50 },
     unit: 'reps',
+    scaling: {
+      beginner: '발 고정 싯업 · 반동 허용',
+      intermediate: '압마트 싯업 (발 고정 없이)',
+      rx: '압마트 싯업 · GHD 싯업으로 강화 가능',
+    },
   },
   {
     id: 'ghd-sit-up',
@@ -333,6 +503,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'core',
     defaultReps: { beginner: 10, intermediate: 20, rx: 30 },
     unit: 'reps',
+    scaling: {
+      beginner: '압마트 싯업으로 대체 · GHD 미경험자 주의',
+      intermediate: 'GHD 부분 범위 (수평까지만)',
+      rx: 'GHD 풀 범위 (수직 이하까지)',
+    },
   },
   {
     id: 'v-up',
@@ -342,6 +517,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'core',
     defaultReps: { beginner: 15, intermediate: 25, rx: 40 },
     unit: 'reps',
+    scaling: {
+      beginner: '크런치로 대체',
+      intermediate: 'V업 (손과 발이 동시에 만나야 함)',
+      rx: '피크드 V업 또는 홀로우-V 콤보',
+    },
   },
   {
     id: 'hollow-rock',
@@ -351,6 +531,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'core',
     defaultReps: { beginner: 20, intermediate: 30, rx: 50 },
     unit: 'reps',
+    scaling: {
+      beginner: '홀로우 홀드 유지 (락 없이)',
+      intermediate: '할로우 락 · 허리가 바닥에서 떨어져야 함',
+      rx: '일정한 리듬으로 연속 수행',
+    },
   },
   {
     id: 'plank',
@@ -360,6 +545,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'core',
     defaultReps: { beginner: 30, intermediate: 45, rx: 60 },
     unit: 'seconds',
+    scaling: {
+      beginner: '무릎 플랭크 30초',
+      intermediate: '스트릭트 플랭크 45초 · 엉덩이 처지지 않게',
+      rx: 'RKC 플랭크 60초 (최대 긴장 유지)',
+    },
   },
   {
     id: 'back-extension',
@@ -369,6 +559,11 @@ export const MOVEMENTS: Movement[] = [
     movementPattern: 'hinge',
     defaultReps: { beginner: 15, intermediate: 20, rx: 30 },
     unit: 'reps',
+    scaling: {
+      beginner: '슈퍼맨 홀드로 대체 (바닥에서)',
+      intermediate: 'GHD 백 익스텐션 · 수평까지',
+      rx: 'GHD 백 익스텐션 풀 범위 · 웨이트 추가 가능',
+    },
   },
 ];
 

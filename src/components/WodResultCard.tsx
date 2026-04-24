@@ -74,6 +74,7 @@ export function WodResultCard({ wod, onAdjust }: Props) {
             <View style={styles.nameCol}>
               <Text style={styles.nameKo}>{wm.movement.nameKo}</Text>
               <Text style={styles.nameEn}>{wm.movement.nameEn}</Text>
+              <Text style={styles.scalingHint}>{wm.movement.scaling[wod.difficulty]}</Text>
             </View>
             <RepDisplay wm={wm} onAdjust={delta => onAdjust(wm.movement.id, delta)} />
           </View>
@@ -106,5 +107,6 @@ const styles = StyleSheet.create({
   repBtn: { width: 28, height: 28, borderRadius: 14, backgroundColor: '#333', justifyContent: 'center', alignItems: 'center' },
   repBtnText: { color: '#FFF', fontSize: 18, lineHeight: 20 },
   repLabel: { fontSize: 14, fontWeight: '700', color: '#FFF', textAlign: 'center', minWidth: 80 },
+  scalingHint: { fontSize: 11, color: '#F9A825', marginTop: 3 },
   hint: { textAlign: 'center', color: '#444', fontSize: 11, paddingVertical: 10 },
 });
