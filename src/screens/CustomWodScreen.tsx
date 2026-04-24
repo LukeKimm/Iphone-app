@@ -130,7 +130,12 @@ export default function CustomWodScreen() {
       <Text style={styles.pageTitle2}>동작 선택</Text>
       <Text style={styles.subtitle}>WOD에 포함할 동작을 선택하세요 ({selectedIds.length}개)</Text>
 
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.catScroll}>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        style={styles.catScroll}
+        contentContainerStyle={styles.catScrollContent}
+      >
         {CATEGORIES.map(cat => (
           <TouchableOpacity
             key={cat}
@@ -198,7 +203,8 @@ const styles = StyleSheet.create({
   chipTxtActive: { color: '#FFF' },
   genBtn: { marginTop: 32, backgroundColor: '#FF6B35', borderRadius: 16, paddingVertical: 16, alignItems: 'center' },
   genBtnText: { color: '#FFF', fontSize: 18, fontWeight: '800' },
-  catScroll: { paddingHorizontal: 20, marginBottom: 12, flexGrow: 0 },
+  catScroll: { marginBottom: 12, flexGrow: 0, maxHeight: 44 },
+  catScrollContent: { paddingHorizontal: 20, alignItems: 'center' },
   catChip: { paddingHorizontal: 14, paddingVertical: 7, borderRadius: 16, backgroundColor: '#2A2A2A', marginRight: 8, borderWidth: 1, borderColor: '#333' },
   catTxt: { color: '#888', fontWeight: '600', fontSize: 13 },
   catTxtActive: { color: '#FFF' },

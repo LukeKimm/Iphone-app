@@ -27,7 +27,6 @@ function headerSubtitle(wod: Wod): string {
 
 function RepDisplay({ wm, onAdjust }: { wm: WodMovement; onAdjust: (delta: number) => void }) {
   const unit = UNIT_LABEL[wm.unit] ?? wm.unit;
-
   const repLabel = wm.repScheme
     ? wm.repScheme.join(' - ') + ' ' + unit
     : `${wm.reps} ${unit}`;
@@ -37,7 +36,9 @@ function RepDisplay({ wm, onAdjust }: { wm: WodMovement; onAdjust: (delta: numbe
       <TouchableOpacity style={styles.repBtn} onPress={() => onAdjust(-1)}>
         <Text style={styles.repBtnText}>−</Text>
       </TouchableOpacity>
-      <Text style={styles.repLabel}>{repLabel}</Text>
+      <Text style={styles.repLabel} numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.7}>
+        {repLabel}
+      </Text>
       <TouchableOpacity style={styles.repBtn} onPress={() => onAdjust(1)}>
         <Text style={styles.repBtnText}>+</Text>
       </TouchableOpacity>
@@ -69,13 +70,17 @@ export function WodResultCard({ wod, onAdjust }: Props) {
             key={wm.movement.id}
             style={[styles.row, idx < wod.movements.length - 1 && styles.rowBorder]}
           >
-            <Text style={styles.idx}>{idx + 1}</Text>
-            <View style={[styles.catDot, { backgroundColor: CATEGORY_COLORS[wm.movement.category] }]} />
-            <View style={styles.nameCol}>
-              <Text style={styles.nameKo}>{wm.movement.nameKo}</Text>
-              <Text style={styles.nameEn}>{wm.movement.nameEn}</Text>
-              <Text style={styles.scalingHint}>{wm.movement.scaling[wod.difficulty]}</Text>
+            {/* 상단: 번호 · 색상점 · 동작 이름 */}
+            <View style={styles.nameRow}>
+              <Text style={styles.idx}>{idx + 1}</Text>
+              <View style={[styles.catDot, { backgroundColor: CATEGORY_COLORS[wm.movement.category] }]} />
+              <View style={styles.nameCol}>
+                <Text style={styles.nameKo}>{wm.movement.nameKo}</Text>
+                <Text style={styles.nameEn}>{wm.movement.nameEn}</Text>
+                <Text style={styles.scalingHint}>{wm.movement.scaling[wod.difficulty]}</Text>
+              </View>
             </View>
+            {/* 하단: rep 조절 (이름과 별도 줄 → 긴 scheme도 깨지지 않음) */}
             <RepDisplay wm={wm} onAdjust={delta => onAdjust(wm.movement.id, delta)} />
           </View>
         ))}
@@ -96,17 +101,29 @@ const styles = StyleSheet.create({
   subtitle: { fontSize: 14, color: 'rgba(255,255,255,0.85)', marginTop: 4 },
   templateName: { fontSize: 12, color: 'rgba(255,255,255,0.65)', marginTop: 6 },
   body: { paddingHorizontal: 12, paddingTop: 4 },
-  row: { flexDirection: 'row', alignItems: 'center', paddingVertical: 12 },
+  // row는 column으로 — 이름 영역과 rep 컨트롤을 세로로 배치
+  row: { flexDirection: 'column', paddingVertical: 12 },
   rowBorder: { borderBottomWidth: 1, borderBottomColor: '#2A2A2A' },
-  idx: { width: 22, fontSize: 13, color: '#555', fontWeight: '700' },
-  catDot: { width: 8, height: 8, borderRadius: 4, marginRight: 10 },
+  nameRow: { flexDirection: 'row', alignItems: 'flex-start' },
+  idx: { width: 22, fontSize: 13, color: '#555', fontWeight: '700', paddingTop: 2 },
+  catDot: { width: 8, height: 8, borderRadius: 4, marginRight: 10, marginTop: 5 },
   nameCol: { flex: 1 },
   nameKo: { fontSize: 16, fontWeight: '700', color: '#FFF' },
   nameEn: { fontSize: 11, color: '#555', marginTop: 2 },
-  repControl: { flexDirection: 'row', alignItems: 'center', gap: 6 },
-  repBtn: { width: 28, height: 28, borderRadius: 14, backgroundColor: '#333', justifyContent: 'center', alignItems: 'center' },
-  repBtnText: { color: '#FFF', fontSize: 18, lineHeight: 20 },
-  repLabel: { fontSize: 14, fontWeight: '700', color: '#FFF', textAlign: 'center', minWidth: 80 },
   scalingHint: { fontSize: 11, color: '#F9A825', marginTop: 3 },
+  // rep 컨트롤: 전체 너비 사용 → 긴 scheme도 여유롭게 표시
+  repControl: {
+    flexDirection: 'row', alignItems: 'center',
+    marginTop: 10, marginLeft: 30,
+  },
+  repBtn: {
+    width: 32, height: 32, borderRadius: 16,
+    backgroundColor: '#333', justifyContent: 'center', alignItems: 'center',
+  },
+  repBtnText: { color: '#FFF', fontSize: 20, lineHeight: 22 },
+  repLabel: {
+    flex: 1, fontSize: 15, fontWeight: '700',
+    color: '#FFF', textAlign: 'center',
+  },
   hint: { textAlign: 'center', color: '#444', fontSize: 11, paddingVertical: 10 },
 });
