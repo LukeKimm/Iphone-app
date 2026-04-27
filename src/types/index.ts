@@ -4,7 +4,6 @@ export type DifficultyLevel = 'beginner' | 'intermediate' | 'rx';
 
 export type RepUnit = 'reps' | 'calories' | 'meters' | 'seconds';
 
-// push/pull/squat/hinge/total(올림픽), mono(유산소), core
 export type MovementPattern = 'push' | 'pull' | 'squat' | 'hinge' | 'total' | 'mono' | 'core';
 
 export interface Movement {
@@ -20,7 +19,6 @@ export interface Movement {
   };
   unit: RepUnit;
   tips?: string;
-  /** 난이도별 수행 방법 및 무게 기준 */
   scaling: {
     beginner: string;
     intermediate: string;
@@ -30,9 +28,11 @@ export interface Movement {
 
 export interface WodMovement {
   movement: Movement;
-  reps: number;           // 라운드당 개수 (또는 치퍼 총 개수)
-  repScheme?: number[];   // e.g. [21, 15, 9] — 있으면 이걸 표시
+  reps: number;
+  repScheme?: number[];
   unit: RepUnit;
+  /** 이 WOD에서만 적용되는 스케일링 설명 (바벨 공유 시 통일 무게로 덮어씀) */
+  scalingOverride?: string;
 }
 
 export type WodType = 'forTime' | 'amrap' | 'emom';
@@ -43,8 +43,10 @@ export interface Wod {
   templateName: string;
   templateDescription: string;
   movements: WodMovement[];
-  rounds?: number;    // forTime: 라운드 수, amrap/emom: 분
-  timeCap?: number;   // 분 (forTime only)
+  rounds?: number;
+  timeCap?: number;
   difficulty: DifficultyLevel;
   createdAt: Date;
+  /** 복수 바벨 동작이 있을 때 공통 무게 안내 */
+  barbellNote?: string;
 }

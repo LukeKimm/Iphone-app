@@ -11,9 +11,17 @@ const Tab = createBottomTabNavigator();
 
 function TabIcon({ emoji, label, focused }: { emoji: string; label: string; focused: boolean }) {
   return (
-    <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-      <Text style={{ fontSize: 20 }}>{emoji}</Text>
-      <Text style={{ fontSize: 10, color: focused ? '#FF6B35' : '#555', marginTop: 2, fontWeight: focused ? '700' : '400' }}>
+    <View style={{ alignItems: 'center', justifyContent: 'center', width: 70 }}>
+      <Text style={{ fontSize: 22 }}>{emoji}</Text>
+      <Text
+        numberOfLines={1}
+        style={{
+          fontSize: 10,
+          color: focused ? '#FF6B35' : '#555',
+          marginTop: 3,
+          fontWeight: focused ? '700' : '400',
+        }}
+      >
         {label}
       </Text>
     </View>
@@ -30,8 +38,9 @@ export default function App() {
           tabBarStyle: {
             backgroundColor: '#1A1A1A',
             borderTopColor: '#2A2A2A',
-            height: 80,
-            paddingBottom: 10,
+            height: 72,
+            paddingBottom: 8,
+            paddingTop: 6,
           },
           tabBarShowLabel: false,
         }}
@@ -40,7 +49,7 @@ export default function App() {
           name="Generator"
           component={GeneratorScreen}
           options={{
-            tabBarIcon: ({ focused }) => <TabIcon emoji="🎲" label="랜덤 WOD" focused={focused} />,
+            tabBarIcon: ({ focused }) => <TabIcon emoji="🎲" label="WOD생성" focused={focused} />,
           }}
         />
         <Tab.Screen

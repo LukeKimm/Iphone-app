@@ -61,6 +61,11 @@ export function WodResultCard({ wod, onAdjust }: Props) {
         </View>
         <Text style={styles.subtitle}>{headerSubtitle(wod)}</Text>
         <Text style={styles.templateName}>{wod.templateName}  ·  {wod.templateDescription}</Text>
+        {wod.barbellNote && (
+          <View style={styles.barbellBanner}>
+            <Text style={styles.barbellBannerText}>🏋️ {wod.barbellNote}</Text>
+          </View>
+        )}
       </View>
 
       {/* 동작 리스트 */}
@@ -77,7 +82,7 @@ export function WodResultCard({ wod, onAdjust }: Props) {
               <View style={styles.nameCol}>
                 <Text style={styles.nameKo}>{wm.movement.nameKo}</Text>
                 <Text style={styles.nameEn}>{wm.movement.nameEn}</Text>
-                <Text style={styles.scalingHint}>{wm.movement.scaling[wod.difficulty]}</Text>
+                <Text style={styles.scalingHint}>{wm.scalingOverride ?? wm.movement.scaling[wod.difficulty]}</Text>
               </View>
             </View>
             {/* 하단: rep 조절 (이름과 별도 줄 → 긴 scheme도 깨지지 않음) */}
@@ -100,6 +105,11 @@ const styles = StyleSheet.create({
   diffText: { color: '#FFF', fontSize: 12, fontWeight: '700' },
   subtitle: { fontSize: 14, color: 'rgba(255,255,255,0.85)', marginTop: 4 },
   templateName: { fontSize: 12, color: 'rgba(255,255,255,0.65)', marginTop: 6 },
+  barbellBanner: {
+    marginTop: 10, backgroundColor: 'rgba(0,0,0,0.25)',
+    borderRadius: 8, paddingHorizontal: 10, paddingVertical: 6,
+  },
+  barbellBannerText: { fontSize: 12, fontWeight: '700', color: '#FFF' },
   body: { paddingHorizontal: 12, paddingTop: 4 },
   // row는 column으로 — 이름 영역과 rep 컨트롤을 세로로 배치
   row: { flexDirection: 'column', paddingVertical: 12 },

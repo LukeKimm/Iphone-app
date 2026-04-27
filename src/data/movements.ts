@@ -81,13 +81,11 @@ export const MOVEMENTS: Movement[] = [
     defaultReps: { beginner: 10, intermediate: 15, rx: 20 },
     unit: 'reps',
     scaling: {
-      beginner: '무릎 들어올리기 (행잉 니 레이즈)',
+      beginner: '행잉 니 레이즈',
       intermediate: '니즈 투 엘보',
       rx: '토즈 투 바로 강화 가능',
     },
   },
-
-  // ── Gymnastics / push ──────────────────────────────
   {
     id: 'push-up',
     nameKo: '푸쉬업',
@@ -144,8 +142,6 @@ export const MOVEMENTS: Movement[] = [
       rx: '핸드스탠드 홀드 5초 포함',
     },
   },
-
-  // ── Gymnastics / squat & total ─────────────────────
   {
     id: 'box-jump',
     nameKo: '박스 점프',
@@ -157,7 +153,7 @@ export const MOVEMENTS: Movement[] = [
     scaling: {
       beginner: '20인치 박스 스텝업',
       intermediate: '20인치 박스 점프',
-      rx: '남 61cm(24인치) / 여 51cm(20인치)',
+      rx: '남 24인치 (61cm) / 여 20인치 (51cm)',
     },
   },
   {
@@ -185,7 +181,7 @@ export const MOVEMENTS: Movement[] = [
     scaling: {
       beginner: '버피 후 박스 스텝오버 (20인치)',
       intermediate: '버피 후 박스 점프오버 (20인치)',
-      rx: '남 61cm(24인치) / 여 51cm(20인치) 박스 점프오버',
+      rx: '남 24인치 / 여 20인치 박스 점프오버',
     },
   },
 
@@ -199,9 +195,9 @@ export const MOVEMENTS: Movement[] = [
     defaultReps: { beginner: 5, intermediate: 10, rx: 15 },
     unit: 'reps',
     scaling: {
-      beginner: '남 40kg / 여 25kg · 데드리프트 하이풀로 연습',
-      intermediate: '남 60kg / 여 40kg',
-      rx: '남 80kg / 여 55kg',
+      beginner: '65lb (29kg) 남 / 45lb (20kg) 여',
+      intermediate: '95lb (43kg) 남 / 65lb (29kg) 여',
+      rx: '135lb (61kg) 남 / 95lb (43kg) 여',
     },
   },
   {
@@ -213,9 +209,9 @@ export const MOVEMENTS: Movement[] = [
     defaultReps: { beginner: 5, intermediate: 10, rx: 15 },
     unit: 'reps',
     scaling: {
-      beginner: '남 35kg / 여 20kg · 무릎 위에서 시작',
-      intermediate: '남 55kg / 여 35kg',
-      rx: '남 70kg / 여 47kg',
+      beginner: '65lb (29kg) 남 / 45lb (20kg) 여',
+      intermediate: '95lb (43kg) 남 / 65lb (29kg) 여',
+      rx: '135lb (61kg) 남 / 95lb (43kg) 여',
     },
   },
   {
@@ -227,9 +223,9 @@ export const MOVEMENTS: Movement[] = [
     defaultReps: { beginner: 5, intermediate: 10, rx: 15 },
     unit: 'reps',
     scaling: {
-      beginner: '남 30kg / 여 20kg · 스내치 그립 데드리프트로 연습',
-      intermediate: '남 50kg / 여 35kg',
-      rx: '남 70kg (Isabel: 61kg) / 여 47kg',
+      beginner: '45lb (20kg) 남 / 35lb (16kg) 여',
+      intermediate: '75lb (34kg) 남 / 55lb (25kg) 여',
+      rx: '115lb (52kg) 남 / 75lb (34kg) 여 · Isabel 기준',
     },
   },
   {
@@ -241,9 +237,9 @@ export const MOVEMENTS: Movement[] = [
     defaultReps: { beginner: 5, intermediate: 10, rx: 15 },
     unit: 'reps',
     scaling: {
-      beginner: '남 40kg / 여 25kg · 클린 또는 저크 분리 연습',
-      intermediate: '남 60kg / 여 40kg',
-      rx: '남 80kg (Grace: 61kg) / 여 55kg',
+      beginner: '65lb (29kg) 남 / 45lb (20kg) 여',
+      intermediate: '95lb (43kg) 남 / 65lb (29kg) 여',
+      rx: '135lb (61kg) 남 / 95lb (43kg) 여 · Grace 기준',
     },
   },
   {
@@ -255,9 +251,9 @@ export const MOVEMENTS: Movement[] = [
     defaultReps: { beginner: 10, intermediate: 15, rx: 20 },
     unit: 'reps',
     scaling: {
-      beginner: '남 15kg / 여 10kg 덤벨 · 교대 없이 한 팔씩',
-      intermediate: '남 22.5kg / 여 15kg 덤벨',
-      rx: '남 22.5kg(50lb) / 여 15kg(35lb) · 교대 스내치',
+      beginner: '35lb (16kg) 남 / 25lb (11kg) 여',
+      intermediate: '50lb (22kg) 남 / 35lb (16kg) 여',
+      rx: '50lb (22kg) 남 / 35lb (16kg) 여',
     },
   },
   {
@@ -269,9 +265,9 @@ export const MOVEMENTS: Movement[] = [
     defaultReps: { beginner: 9, intermediate: 15, rx: 21 },
     unit: 'reps',
     scaling: {
-      beginner: '남 30kg / 여 20kg · 프론트 스쿼트와 푸쉬 프레스 분리 연습',
-      intermediate: '남 35kg / 여 25kg',
-      rx: '남 43kg(95lb) / 여 29kg(65lb) (Fran 기준)',
+      beginner: '65lb (29kg) 남 / 45lb (20kg) 여',
+      intermediate: '75lb (34kg) 남 / 55lb (25kg) 여',
+      rx: '95lb (43kg) 남 / 65lb (29kg) 여 · Fran 기준',
     },
   },
   {
@@ -283,13 +279,11 @@ export const MOVEMENTS: Movement[] = [
     defaultReps: { beginner: 15, intermediate: 20, rx: 30 },
     unit: 'reps',
     scaling: {
-      beginner: '남 6kg / 여 4kg · 목표 높이 2.7m',
-      intermediate: '남 9kg / 여 6kg · 목표 높이 3m(남) / 2.7m(여)',
-      rx: '남 9kg(20lb) 3m / 여 6kg(14lb) 2.7m',
+      beginner: '14lb (6kg) 남 / 10lb (4kg) 여',
+      intermediate: '20lb (9kg) 남 / 14lb (6kg) 여',
+      rx: '20lb (9kg) 3m 남 / 14lb (6kg) 2.7m 여',
     },
   },
-
-  // ── Weightlifting / hinge ──────────────────────────
   {
     id: 'deadlift',
     nameKo: '데드리프트',
@@ -300,9 +294,9 @@ export const MOVEMENTS: Movement[] = [
     unit: 'reps',
     tips: '체중의 1.5배 기준',
     scaling: {
-      beginner: '남 60kg / 여 40kg · 루마니안 데드리프트로 대체 가능',
-      intermediate: '남 80-100kg / 여 55-70kg',
-      rx: '남 102kg(225lb) / 여 70kg(155lb)',
+      beginner: '135lb (61kg) 남 / 95lb (43kg) 여',
+      intermediate: '185lb (84kg) 남 / 135lb (61kg) 여',
+      rx: '225lb (102kg) 남 / 155lb (70kg) 여',
     },
   },
   {
@@ -314,13 +308,11 @@ export const MOVEMENTS: Movement[] = [
     defaultReps: { beginner: 15, intermediate: 21, rx: 30 },
     unit: 'reps',
     scaling: {
-      beginner: '남 16kg / 여 12kg · 러시안 스윙(어깨 높이)',
-      intermediate: '남 24kg / 여 16kg · 아메리칸 스윙(머리 위)',
-      rx: '남 32kg(70lb) / 여 24kg(53lb) · 아메리칸 스윙',
+      beginner: '35lb (16kg) 남 / 26lb (12kg) 여 · 러시안 스윙 (어깨 높이)',
+      intermediate: '53lb (24kg) 남 / 35lb (16kg) 여 · 아메리칸 스윙 (머리 위)',
+      rx: '70lb (32kg) 남 / 53lb (24kg) 여 · 아메리칸 스윙',
     },
   },
-
-  // ── Weightlifting / push ───────────────────────────
   {
     id: 'push-press',
     nameKo: '푸쉬 프레스',
@@ -330,9 +322,9 @@ export const MOVEMENTS: Movement[] = [
     defaultReps: { beginner: 9, intermediate: 15, rx: 21 },
     unit: 'reps',
     scaling: {
-      beginner: '남 30kg / 여 20kg · 스트릭트 프레스로 대체 가능',
-      intermediate: '남 40kg / 여 27kg',
-      rx: '남 50kg(110lb) / 여 35kg(75lb)',
+      beginner: '65lb (29kg) 남 / 45lb (20kg) 여',
+      intermediate: '95lb (43kg) 남 / 65lb (29kg) 여',
+      rx: '115lb (52kg) 남 / 75lb (34kg) 여',
     },
   },
   {
@@ -344,13 +336,11 @@ export const MOVEMENTS: Movement[] = [
     defaultReps: { beginner: 9, intermediate: 15, rx: 21 },
     unit: 'reps',
     scaling: {
-      beginner: '남 30kg / 여 20kg · 푸쉬 프레스 방식 사용',
-      intermediate: '남 40kg / 여 27kg · 푸쉬 저크 허용',
-      rx: '남 50kg(110lb) / 여 35kg(75lb) · 방식 자유',
+      beginner: '65lb (29kg) 남 / 45lb (20kg) 여',
+      intermediate: '95lb (43kg) 남 / 65lb (29kg) 여',
+      rx: '115lb (52kg) 남 / 75lb (34kg) 여 · 방식 자유',
     },
   },
-
-  // ── Weightlifting / squat ──────────────────────────
   {
     id: 'front-squat',
     nameKo: '프론트 스쿼트',
@@ -360,9 +350,9 @@ export const MOVEMENTS: Movement[] = [
     defaultReps: { beginner: 5, intermediate: 10, rx: 15 },
     unit: 'reps',
     scaling: {
-      beginner: '남 40kg / 여 25kg · 고블릿 스쿼트로 대체 가능',
-      intermediate: '남 60-70kg / 여 40-50kg',
-      rx: '남 80kg+ / 여 55kg+',
+      beginner: '75lb (34kg) 남 / 55lb (25kg) 여',
+      intermediate: '115lb (52kg) 남 / 75lb (34kg) 여',
+      rx: '155lb (70kg) 남 / 105lb (47kg) 여',
     },
   },
   {
@@ -374,9 +364,9 @@ export const MOVEMENTS: Movement[] = [
     defaultReps: { beginner: 5, intermediate: 10, rx: 15 },
     unit: 'reps',
     scaling: {
-      beginner: '남 50kg / 여 30kg · 박스 스쿼트로 깊이 연습',
-      intermediate: '남 70-90kg / 여 45-60kg',
-      rx: '남 100kg+ / 여 65kg+',
+      beginner: '95lb (43kg) 남 / 65lb (29kg) 여',
+      intermediate: '135lb (61kg) 남 / 95lb (43kg) 여',
+      rx: '185lb (84kg) 남 / 125lb (57kg) 여',
     },
   },
   {
@@ -388,13 +378,13 @@ export const MOVEMENTS: Movement[] = [
     defaultReps: { beginner: 5, intermediate: 10, rx: 15 },
     unit: 'reps',
     scaling: {
-      beginner: 'PVC 또는 남 20kg / 여 15kg · 유연성 위주',
-      intermediate: '남 40kg / 여 25kg',
-      rx: '남 60kg+ / 여 40kg+',
+      beginner: 'PVC 또는 45lb (20kg) 남 / 35lb (16kg) 여',
+      intermediate: '65lb (29kg) 남 / 45lb (20kg) 여',
+      rx: '95lb (43kg) 남 / 65lb (29kg) 여',
     },
   },
 
-  // ── Cardio / mono ──────────────────────────────────
+  // ── Cardio ─────────────────────────────────────────
   {
     id: 'run',
     nameKo: '달리기',
@@ -418,7 +408,7 @@ export const MOVEMENTS: Movement[] = [
     defaultReps: { beginner: 250, intermediate: 500, rx: 1000 },
     unit: 'meters',
     scaling: {
-      beginner: '250m (500m 스플릿 2:40 이하 페이스)',
+      beginner: '250m (500m 스플릿 2:40 페이스)',
       intermediate: '500m (500m 스플릿 2:10 페이스)',
       rx: '1000m 최대 페이스',
     },
@@ -432,9 +422,9 @@ export const MOVEMENTS: Movement[] = [
     defaultReps: { beginner: 10, intermediate: 15, rx: 20 },
     unit: 'calories',
     scaling: {
-      beginner: '10칼로리 · 팔다리 동시 사용',
-      intermediate: '15칼로리 · 일정한 페이스 유지',
-      rx: '20칼로리 · 전속력',
+      beginner: '10 Cal · 팔다리 동시 사용',
+      intermediate: '15 Cal · 일정한 페이스 유지',
+      rx: '20 Cal · 전속력',
     },
   },
   {

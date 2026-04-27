@@ -195,6 +195,72 @@ const WOD_TEMPLATES: WodTemplateConfig[] = [
   },
 ];
 
+// ─── 바벨 무게 통일 ────────────────────────────────────────────────────────────
+
+// 숫자가 작을수록 기술적으로 더 까다로운(= 무게 제약이 큰) 동작
+const BARBELL_TIER: Record<string, number> = {
+  'power-snatch':         1,
+  'overhead-squat':       1,
+  'thruster':             2,
+  'clean-and-jerk':       2,
+  'push-press':           2,
+  'shoulder-to-overhead': 2,
+  'front-squat':          2,
+  'power-clean':          3,
+  'hang-power-clean':     3,
+  'deadlift':             4,
+  'back-squat':           4,
+};
+
+const BARBELL_WEIGHTS: Record<number, Record<DifficultyLevel, string>> = {
+  1: {
+    beginner:     '45lb (20kg) 남 / 35lb (16kg) 여',
+    intermediate: '65lb (29kg) 남 / 45lb (20kg) 여',
+    rx:           '95lb (43kg) 남 / 65lb (29kg) 여',
+  },
+  2: {
+    beginner:     '65lb (29kg) 남 / 45lb (20kg) 여',
+    intermediate: '95lb (43kg) 남 / 65lb (29kg) 여',
+    rx:           '135lb (61kg) 남 / 95lb (43kg) 여',
+  },
+  3: {
+    beginner:     '75lb (34kg) 남 / 55lb (25kg) 여',
+    intermediate: '115lb (52kg) 남 / 75lb (34kg) 여',
+    rx:           '155lb (70kg) 남 / 105lb (48kg) 여',
+  },
+  4: {
+    beginner:     '95lb (43kg) 남 / 65lb (29kg) 여',
+    intermediate: '155lb (70kg) 남 / 105lb (48kg) 여',
+    rx:           '225lb (102kg) 남 / 155lb (70kg) 여',
+  },
+};
+
+/**
+ * WOD에 바벨 동작이 2개 이상이면 가장 기술적으로 제약이 큰 동작의 무게로 통일.
+ * 각 WodMovement에 scalingOverride를 세팅하고 wod.barbellNote를 반환.
+ */
+function applyBarbellUnification(
+  movements: WodMovement[],
+  difficulty: DifficultyLevel,
+): { movements: WodMovement[]; barbellNote?: string } {
+  const barbellMoves = movements.filter(wm => wm.movement.id in BARBELL_TIER);
+  if (barbellMoves.length < 2) return { movements };
+
+  const minTier = Math.min(...barbellMoves.map(wm => BARBELL_TIER[wm.movement.id]));
+  const unifiedWeight = BARBELL_WEIGHTS[minTier][difficulty];
+
+  const updatedMovements = movements.map(wm =>
+    wm.movement.id in BARBELL_TIER
+      ? { ...wm, scalingOverride: unifiedWeight }
+      : wm,
+  );
+
+  return {
+    movements: updatedMovements,
+    barbellNote: `바벨 통일 무게 · ${unifiedWeight}`,
+  };
+}
+
 // ─── 유틸 ─────────────────────────────────────────────────────────────────────
 
 function shuffle<T>(array: T[]): T[] {
@@ -289,16 +355,19 @@ export function generateWod(
     });
   }
 
+  const { movements: finalMovements, barbellNote } = applyBarbellUnification(wodMovements, difficulty);
+
   return {
     id: Date.now().toString(),
     type: wodType,
     templateName: template.name,
     templateDescription: template.description,
-    movements: wodMovements,
+    movements: finalMovements,
     rounds: template.rounds,
     timeCap: template.timeCap,
     difficulty,
     createdAt: new Date(),
+    barbellNote,
   };
 }
 
@@ -362,16 +431,19 @@ export function generateCustomWod(
     });
   }
 
+  const { movements: finalMovements, barbellNote } = applyBarbellUnification(wodMovements, difficulty);
+
   return {
     id: Date.now().toString(),
     type: wodType,
     templateName: template.name,
     templateDescription: template.description,
-    movements: wodMovements,
+    movements: finalMovements,
     rounds: template.rounds,
     timeCap: template.timeCap,
     difficulty,
     createdAt: new Date(),
+    barbellNote,
   };
 }
 
