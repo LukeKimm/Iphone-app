@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  View, Text, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity,
+  View, Text, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity, TextInput,
 } from 'react-native';
 import { MOVEMENTS, CATEGORY_LABELS, CATEGORY_COLORS } from '../data/movements';
 import { Category, WodType, DifficultyLevel, Wod } from '../types';
@@ -16,6 +16,7 @@ export default function CustomWodScreen() {
   const [difficulty, setDifficulty] = useState<DifficultyLevel>('intermediate');
   const [wod, setWod] = useState<Wod | null>(null);
   const [activeCategory, setActiveCategory] = useState<Category | 'all'>('all');
+  const [search, setSearch] = useState('');
 
   const toggleMovement = (id: string) =>
     setSelectedIds(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]);
@@ -46,9 +47,12 @@ export default function CustomWodScreen() {
     });
   };
 
-  const filtered = MOVEMENTS.filter(
-    m => activeCategory === 'all' || m.category === activeCategory
-  );
+  const filtered = MOVEMENTS.filter(m => {
+    const matchCat = activeCategory === 'all' || m.category === activeCategory;
+    const q = search.toLowerCase();
+    const matchSearch = !q || m.nameKo.includes(q) || m.nameEn.toLowerCase().includes(q);
+    return matchCat && matchSearch;
+  });
 
   // ── Result ────────────────────────────────────────────────────────────────
 
@@ -127,34 +131,45 @@ export default function CustomWodScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.pageTitle2}>동작 선택</Text>
-      <Text style={styles.subtitle}>WOD에 포함할 동작을 선택하세요 ({selectedIds.length}개)</Text>
+      {/* ── 고정 헤더 ── */}
+      <View style={styles.fixedHeader}>
+        <Text style={styles.pageTitle2}>동작 선택</Text>
+        <Text style={styles.subtitle}>WOD에 포함할 동작을 선택하세요 ({selectedIds.length}개)</Text>
 
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        style={styles.catScroll}
-        contentContainerStyle={styles.catScrollContent}
-      >
-        {CATEGORIES.map(cat => (
-          <TouchableOpacity
-            key={cat}
-            style={[
-              styles.catChip,
-              activeCategory === cat && {
-                backgroundColor: cat === 'all' ? '#FF6B35' : CATEGORY_COLORS[cat as Category],
-              },
-            ]}
-            onPress={() => setActiveCategory(cat)}
-          >
-            <Text style={[styles.catTxt, activeCategory === cat && styles.catTxtActive]}>
-              {cat === 'all' ? '전체' : CATEGORY_LABELS[cat]}
-            </Text>
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
+        <TextInput
+          style={styles.search}
+          placeholder="동작 검색..."
+          placeholderTextColor="#555"
+          value={search}
+          onChangeText={setSearch}
+        />
 
-      <ScrollView contentContainerStyle={styles.movList}>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.catScrollContent}
+        >
+          {CATEGORIES.map(cat => (
+            <TouchableOpacity
+              key={cat}
+              style={[
+                styles.catChip,
+                activeCategory === cat && {
+                  backgroundColor: cat === 'all' ? '#FF6B35' : CATEGORY_COLORS[cat as Category],
+                },
+              ]}
+              onPress={() => setActiveCategory(cat)}
+            >
+              <Text style={[styles.catTxt, activeCategory === cat && styles.catTxtActive]}>
+                {cat === 'all' ? '전체' : CATEGORY_LABELS[cat]}
+              </Text>
+            </TouchableOpacity>
+          ))}
+        </ScrollView>
+      </View>
+
+      {/* ── 스크롤 목록 ── */}
+      <ScrollView style={styles.list} contentContainerStyle={styles.movList}>
         {filtered.map(m => {
           const sel = selectedIds.includes(m.id);
           return (
@@ -194,7 +209,7 @@ const styles = StyleSheet.create({
   back: { color: '#FF6B35', fontSize: 16 },
   pageTitle: { fontSize: 22, fontWeight: '900', color: '#FFF' },
   pageTitle2: { fontSize: 26, fontWeight: '900', color: '#FFF', paddingHorizontal: 20, paddingTop: 16, paddingBottom: 4 },
-  subtitle: { fontSize: 13, color: '#666', paddingHorizontal: 20, marginBottom: 12 },
+  subtitle: { fontSize: 13, color: '#666', paddingHorizontal: 20, marginBottom: 10 },
   selectedInfo: { fontSize: 13, color: '#888', marginBottom: 16 },
   sectionLabel: { fontSize: 12, fontWeight: '600', color: '#666', marginBottom: 8, marginTop: 18, textTransform: 'uppercase', letterSpacing: 1 },
   chipRow: { flexDirection: 'row', gap: 8, flexWrap: 'wrap' },
@@ -203,12 +218,24 @@ const styles = StyleSheet.create({
   chipTxtActive: { color: '#FFF' },
   genBtn: { marginTop: 32, backgroundColor: '#FF6B35', borderRadius: 16, paddingVertical: 16, alignItems: 'center' },
   genBtnText: { color: '#FFF', fontSize: 18, fontWeight: '800' },
-  catScroll: { marginBottom: 12, flexGrow: 0, maxHeight: 44 },
-  catScrollContent: { paddingHorizontal: 20, alignItems: 'center' },
+  fixedHeader: {
+    backgroundColor: '#121212',
+    borderBottomWidth: 1,
+    borderBottomColor: '#1E1E1E',
+    paddingBottom: 8,
+  },
+  search: {
+    marginHorizontal: 20, marginBottom: 10,
+    backgroundColor: '#1E1E1E', borderRadius: 10,
+    paddingHorizontal: 14, paddingVertical: 10,
+    color: '#FFF', fontSize: 15, borderWidth: 1, borderColor: '#333',
+  },
+  catScrollContent: { paddingHorizontal: 20, paddingBottom: 8, alignItems: 'center' },
   catChip: { paddingHorizontal: 14, paddingVertical: 7, borderRadius: 16, backgroundColor: '#2A2A2A', marginRight: 8, borderWidth: 1, borderColor: '#333' },
   catTxt: { color: '#888', fontWeight: '600', fontSize: 13 },
   catTxtActive: { color: '#FFF' },
-  movList: { paddingHorizontal: 20, paddingBottom: 100 },
+  list: { flex: 1 },
+  movList: { paddingHorizontal: 16, paddingTop: 12, paddingBottom: 100 },
   movCard: { flexDirection: 'row', backgroundColor: '#1E1E1E', borderRadius: 12, marginBottom: 8, overflow: 'hidden', borderWidth: 1, borderColor: '#2A2A2A', alignItems: 'center' },
   catBar: { width: 5, alignSelf: 'stretch' },
   movContent: { flex: 1, padding: 12 },
